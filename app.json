@@ -33,8 +33,33 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      "expo-web-browser",
+      [
+        "@stripe/stripe-terminal-react-native",
+        {
+          "enableLogging": true
+        }
       ]
     ],
+    "ios": {
+      "bundleIdentifier": "com.yourco.kiosk",
+      "associatedDomains": ["applinks:yourdomain.com"],
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "We use Bluetooth to connect to card readers.",
+        "NSLocationWhenInUseUsageDescription": "Location is required to accept in-person payments."
+      }
+    },
+    "android": {
+      "package": "com.yourco.kiosk",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "category": ["BROWSABLE", "DEFAULT"],
+          "data": [{ "scheme": "stripekiosk" }]
+        }
+      ]
+    },
     "experiments": {
       "typedRoutes": true
     }
